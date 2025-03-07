@@ -1,12 +1,18 @@
 export const domain = 'http://127.0.0.1:8000/'
-export const init = (method, data) => {
-  return {
+export const init = (method, token = null, data = null) => {
+  const option = {
     method: method,
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
   }
+  if (token) {
+    option.headers['Authorization'] = 'Bearer ' + token
+  }
+  if (data) {
+    option['body'] = JSON.stringify(data)
+  }
+  return option
 }
 export const setCookie = (name, value, exdays = 5) => {
   const date = new Date()
