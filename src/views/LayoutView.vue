@@ -9,12 +9,15 @@
     <div class="navbar">
       <RouterLink to="/menu" class="navbar__menu">Thực đơn</RouterLink>
       <RouterLink to="/order" class="navbar__order">Đặt bàn</RouterLink>
+      <RouterLink v-if="userStore.info && (userStore.info['is_staff'] || userStore.info['is_superuser'])" to="/order"
+        class="navbar__order">
+        Order khách</RouterLink>
     </div>
     <div @click="handleClickAccount" class="account">
       <div class="avatar">
-        <img src="../assets/chuahe.jpg" alt="">
+        <img ref="userImage" src="" alt="">
       </div>
-      <p class="username">Admin</p>
+      <p ref="username" class="username"></p>
     </div>
   </header>
   <main>
@@ -28,9 +31,24 @@
 </template>
 <script setup>
 import router from '@/router';
+import { getInfoUser } from '@/service/accountService';
+import { useUserStore } from '@/stores/user';
+import { onMounted, ref } from 'vue';
+const userStore = useUserStore()
+const username = ref()
+const userImage = ref()
 const handleClickAccount = () => {
   router.push('account')
 }
+onMounted(async () => {
+  await getInfoUser()
+  const info = userStore.info
+  if (info) {
+    console.log(info, username.value, userStore.info['username'])
+    username.value.textContent = userStore.info['username']
+    userImage.value.src = userStore.info['avatar']
+  }
+})
 </script>
 
 <style scoped>
@@ -70,14 +88,11 @@ img {
 .navbar a {
   color: black;
   font-size: 18px;
+  margin-right: 20px;
 }
 
 .navbar a:hover {
   color: red;
-}
-
-.navbar__menu {
-  margin-right: 20px;
 }
 
 .avatar img {

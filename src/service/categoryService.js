@@ -1,4 +1,4 @@
-import { domain } from './domain'
+import { domain } from './utils'
 
 export const getAllCategory = async () => {
   const response = await fetch(domain + 'menu/item')
