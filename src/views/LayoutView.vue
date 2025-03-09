@@ -19,6 +19,12 @@
       </div>
       <p ref="username" class="username"></p>
     </div>
+    <div v-if="showDropdownAccountButton" class="overlay" @click="showDropdownAccountButton = false">
+      <ul v-show="showDropdownAccountButton" class="dropdown-account">
+        <li @click="router.push('info')">Thông tin tài khoản</li>
+        <li @click="handleLogout">Đăng xuất</li>
+      </ul>
+    </div>
   </header>
   <main>
     <RouterView />
@@ -30,26 +36,45 @@
   </footer>
 </template>
 <script setup>
-import router from '@/router';
 import { getInfoUser } from '@/service/accountService';
+import { setCookie } from '@/service/utils';
 import { useUserStore } from '@/stores/user';
 import { onMounted, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 const userStore = useUserStore()
 const username = ref(null)
 const hasAvatar = ref(false)
 const userImage = ref(null)
+const showDropdownAccountButton = ref(false)
+const isLogged = ref(false)
+const router = useRouter()
+const route = useRoute()
 const handleClickAccount = () => {
-  router.push('login')
+  if (isLogged.value) {
+    showDropdownAccountButton.value = !showDropdownAccountButton.value
+  }
+  else {
+    router.push('login')
+  }
+  console.log(userStore.info)
 }
-onMounted(async () => {
-  await getInfoUser()
+const initAccount = () => {
   const info = userStore.info
   if (info) {
+    isLogged.value = true
     username.value.textContent = userStore.info['username']
     if (userStore.info['avatar'] != null) {
       userImage.value.src = userStore.info['avatar']
     }
   }
+}
+const handleLogout = () => {
+  setCookie('token', '', null)
+  window.location.reload()
+}
+onMounted(async () => {
+  await getInfoUser()
+  initAccount()
 })
 
 </script>
@@ -117,5 +142,29 @@ footer {
   padding: 20px;
   color: white;
   background: #1b1b1b;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.dropdown-account {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  right: 0;
+  top: 60px;
+}
+
+.dropdown-account li {
+  padding: 8px 5px;
+}
+
+.dropdown-account li:hover {
+  background-color: rgb(158, 231, 158);
 }
 </style>
