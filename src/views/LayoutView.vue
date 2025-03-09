@@ -21,7 +21,7 @@
     </div>
     <div v-if="showDropdownAccountButton" class="overlay" @click="showDropdownAccountButton = false">
       <ul v-show="showDropdownAccountButton" class="dropdown-account">
-        <li @click="router.push('info')">Thông tin tài khoản</li>
+        <li @click="router.push('profile')">Thông tin tài khoản</li>
         <li @click="handleLogout">Đăng xuất</li>
       </ul>
     </div>
@@ -56,7 +56,6 @@ const handleClickAccount = () => {
   else {
     router.push('login')
   }
-  console.log(userStore.info)
 }
 const initAccount = () => {
   const info = userStore.info
@@ -128,6 +127,8 @@ img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 main {

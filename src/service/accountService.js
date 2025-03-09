@@ -1,5 +1,5 @@
 import { useUserStore } from '@/stores/user'
-import { domain, init, setCookie } from './utils'
+import { domain, getCookie, init, setCookie } from './utils'
 
 export const login = async (data) => {
   const response = await fetch(domain + `user/login`, init('POST', null, data))
@@ -34,4 +34,26 @@ export const getInfoUser = async () => {
   const response = await fetch(domain + 'user/info', init('GET', token))
   const json = await response.json()
   userStore.info = json
+}
+
+export const uploadAvatar = async (file, id, token) => {
+  const formData = new FormData()
+  formData.append('avatar', file)
+  let check = false
+  await fetch(domain + 'user/upload_avatar/' + id, {
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      check = true
+    })
+    .catch((e) => {
+      console.log('error upload image: ' + e)
+    })
+
+  return check
 }

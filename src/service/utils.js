@@ -24,3 +24,13 @@ export const setCookie = (name, value, exdays = 5) => {
     document.cookie = name + '=' + value
   }
 }
+export const getCookie = (name) => {
+  const cookie = document.cookie.split(';')
+  for (let item of cookie) {
+    const temp = item.trim().split('=')
+    if (temp[0] == name) {
+      return temp[1]
+    }
+  }
+  return ''
+}

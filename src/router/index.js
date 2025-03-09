@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Account from '@/views/LoginView.vue'
 import MenuView from '@/views/MenuView.vue'
 import OrderView from '@/views/OrderView.vue'
 import LayoutView from '@/views/LayoutView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import LoginView from '@/views/LoginView.vue'
-import ProfileView from '@/views/ProfileView.vue'
+import DashboardView from '@/views/DashboardView.vue'
+import DashboardOrder from '@/components/DashboardOrder.vue'
+import DashboardProfile from '@/components/DashboardProfile.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -15,17 +16,17 @@ const router = createRouter({
       component: LayoutView,
       children: [
         {
-          path: '/menu',
+          path: 'menu',
           name: 'menu',
           component: MenuView,
         },
         {
-          path: '/order',
+          path: 'order',
           name: 'order',
           component: OrderView,
         },
         {
-          path: '/',
+          path: '',
           name: 'home',
           component: HomeView,
         },
@@ -48,8 +49,19 @@ const router = createRouter({
     },
     {
       path: '/profile',
-      name: 'profile',
-      component: ProfileView,
+      component: DashboardView,
+      children: [
+        {
+          path: 'order',
+          name: 'my-order',
+          component: DashboardOrder,
+        },
+        {
+          path: '',
+          name: 'profile',
+          component: DashboardProfile,
+        },
+      ],
     },
   ],
 })
