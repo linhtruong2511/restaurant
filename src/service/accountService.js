@@ -10,6 +10,16 @@ export const login = async (data) => {
   }
   return false
 }
+export const register = async (data) => {
+  try {
+    const response = await fetch(domain + 'user/register', init('POST', null, data))
+    const json = await response.json()
+    return true
+  } catch (e) {
+    console.log('error: ' + e)
+    return false
+  }
+}
 export const getInfoUser = async () => {
   const userStore = useUserStore()
   const cookies = document.cookie.split(';')

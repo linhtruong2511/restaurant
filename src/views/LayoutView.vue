@@ -15,7 +15,7 @@
     </div>
     <div @click="handleClickAccount" class="account">
       <div class="avatar">
-        <img ref="userImage" src="" alt="">
+        <img ref="userImage" src="../assets/user.png" alt="">
       </div>
       <p ref="username" class="username"></p>
     </div>
@@ -25,7 +25,7 @@
   </main>
   <footer>
     <p>
-      Copyright by @TruongKhanhLinh
+      Copyright @ 2025 LinhTruong
     </p>
   </footer>
 </template>
@@ -35,20 +35,23 @@ import { getInfoUser } from '@/service/accountService';
 import { useUserStore } from '@/stores/user';
 import { onMounted, ref } from 'vue';
 const userStore = useUserStore()
-const username = ref()
-const userImage = ref()
+const username = ref(null)
+const hasAvatar = ref(false)
+const userImage = ref(null)
 const handleClickAccount = () => {
-  router.push('account')
+  router.push('login')
 }
 onMounted(async () => {
   await getInfoUser()
   const info = userStore.info
   if (info) {
-    console.log(info, username.value, userStore.info['username'])
     username.value.textContent = userStore.info['username']
-    userImage.value.src = userStore.info['avatar']
+    if (userStore.info['avatar'] != null) {
+      userImage.value.src = userStore.info['avatar']
+    }
   }
 })
+
 </script>
 
 <style scoped>
@@ -60,6 +63,7 @@ header {
   padding: 5px 20px;
   position: sticky;
   top: 0;
+  min-height: 66px;
 }
 
 .logo a {
@@ -96,8 +100,8 @@ img {
 }
 
 .avatar img {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
 }
 
