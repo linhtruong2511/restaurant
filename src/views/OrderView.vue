@@ -1,18 +1,8 @@
 <template>
-  <div>Order view</div>
+  Order view
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-  const category = ref([
-    'Tráng miệng',
-    'Lẩu',
-    'Thịt bò',
-    'Thịt heo'
-  ])
 </script>
-  
-<style scoped>
 
-</style>
+<style scoped></style>

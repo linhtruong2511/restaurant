@@ -30,7 +30,7 @@
       <div class="footer">
         <button :disabled="inputInvalid" @click="handleLogin">Đăng nhập</button>
       </div>
-      <a href="#">Chưa có tài khoản? Đăng ký</a>
+      <a href="register">Chưa có tài khoản? Đăng ký</a>
     </div>
   </div>
 </template>
