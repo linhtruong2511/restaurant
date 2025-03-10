@@ -48,58 +48,94 @@ onMounted(async () => {
 <style scoped>
 ul {
   list-style-type: none;
-  padding: 10px;
-  margin-right: 50px;
-  min-width: 150px;
+  padding: 20px;
+  margin-right: 30px;
+  min-width: 180px;
+  position: sticky;
+  top: 100px;
+  background-color: white;
+  /* Thêm background để tránh bị lẫn với nội dung khi scroll */
+  border-right: 1px solid #eee;
 }
 
 li {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 18px;
+  margin-bottom: 15px;
   width: 100%;
 }
 
 li a {
-  color: black;
+  color: #333;
   cursor: pointer;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 li a:hover {
-  color: orange;
+  background-color: #f0f0f0;
+  color: #ff6600;
 }
 
 .active {
-  color: orange;
+  color: #ff6600;
+  font-weight: 600;
 }
 
 .container {
-  display: flex;
-  align-items: start;
-  margin-top: 30px;
+  display: grid;
+  /* Thay đổi thành grid */
+  grid-template-columns: 200px 1fr;
+  /* Xác định độ rộng cột */
+  gap: 20px;
+  margin: 30px;
+}
+
+.item {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
 }
 
 .item img {
-  width: 310px;
-  height: 250px;
-  border-radius: 10px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.item:hover img {
+  transform: scale(1.05);
 }
 
 .item p {
   text-align: center;
+  padding: 10px;
 }
 
 .item .name {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .item .price {
-  color: gray;
+  color: #888;
+  font-size: 14px;
 }
 
 .menu_item {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  /* Thay đổi dòng này */
   gap: 20px;
+  padding: 20px;
 }
 </style>
