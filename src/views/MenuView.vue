@@ -19,9 +19,11 @@
     </ul>
     <div class="menu_item">
       <div v-for="(item, index) in menuItem" :key="index" class="item">
+        <button :disabled="cartStore.isSelected(item)" class="add-cart-btn" @click="(e) => addToCart(e, item)"><i
+            class="fa-solid fa-cart-plus"></i></button>
         <img :src="item.image" alt="">
         <p class="name">{{ item.name }}</p>
-        <p class="price">{{ item.price }}.000 đ</p>
+        <p class="price">{{ item.price }}.000 VNĐ</p>
       </div>
     </div>
   </div>
@@ -31,13 +33,19 @@
 import { getAllCategory, getItems } from '@/service/categoryService';
 import { onMounted, ref } from 'vue';
 import route from '@/router';
+import { useCartStore } from '@/stores/cart';
 
 const actived = ref('appetizer')
 const menuItem = ref([])
+const cartStore = useCartStore()
 const handleClickCategory = async (category) => {
   actived.value = category
   const data = await getItems(category, 0)
   menuItem.value = data.results
+}
+const addToCart = (e, item) => {
+  e.target.disabled = true
+  cartStore.addToCart(item)
 }
 onMounted(async () => {
   const data = await getItems('appetizer', 0)
@@ -97,6 +105,7 @@ li a:hover {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  position: relative;
 }
 
 .item:hover {
@@ -137,5 +146,19 @@ li a:hover {
   /* Thay đổi dòng này */
   gap: 20px;
   padding: 20px;
+}
+
+.add-cart-btn {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+
+.add-cart-btn i {
+  pointer-events: none;
 }
 </style>
