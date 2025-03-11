@@ -9,6 +9,8 @@ import DashboardOrder from '@/components/DashboardOrder.vue'
 import DashboardProfile from '@/components/DashboardProfile.vue'
 import OrderView from '@/views/OrderView.vue'
 import BookingView from '@/views/BookingView.vue'
+import EditOrderView from '@/views/EditOrderView.vue'
+import BillView from '@/views/BillView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,6 +32,16 @@ const router = createRouter({
           path: 'order',
           name: 'order',
           component: OrderView,
+        },
+        {
+          path: 'order/:id/edit',
+          name: 'edit-order',
+          component: EditOrderView,
+        },
+        {
+          path: 'order/:id/bill',
+          name: 'bill',
+          component: BillView,
         },
         {
           path: '',
