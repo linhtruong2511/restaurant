@@ -1,21 +1,8 @@
 <template>
   <div class="booking-page">
     <div class="booking-section">
-      <h2>Đặt Bàn</h2>
-      <form @submit.prevent="submitBooking">
-        <!-- <input type="text" placeholder="Tên" v-model="booking.name" required>
-        <input type="tel" placeholder="Số điện thoại" v-model="booking.phone" required>
-        <input type="email" placeholder="Email" v-model="booking.email">
-        <input type="number" placeholder="Số lượng người" v-model="booking.guests" required>
-        <input type="datetime-local" v-model="booking.dateTime" required> -->
-        <label for="number">Số lượng người</label>
-        <input type="number" id="number" max="10" min="1" v-model="booking.guests">
-        <label for="datetime">Thời gian</label>
-        <input type="datetime-local" id="datetime" v-model="booking.dateTime">
-        <button :disabled="cartStore.count < 1 ? true : false" type="submit">Đặt Bàn</button>
-      </form>
+      <FormSubmit />
     </div>
-
     <div v-if="cartStore.count !== 0" class="menu-section">
       <div class="menu-section-header">
         <h2>Danh sách các món</h2>
@@ -38,10 +25,12 @@
       </div>
     </div>
     <div v-else-if="bookingSuccess" class="menu-section menu-section-oops">
-      <p v-if="bookingFail">Hệ thống bị lỗi, hãy thử đạt hàng lại</p>
-      <p v-else>Bạn đã đặt bàn thành công, phản hồi sẽ được gửi tới mail của bạn !!!</p>
+      <p>Bạn đã đặt bàn thành công, phản hồi sẽ được gửi tới mail của bạn !!!</p>
     </div>
-    <div @click="linkToMenu" v-else class="menu-section menu-section-oops">
+    <div v-else-if="bookingFail" class="menu-section menu-section-oops">
+      <p>Thông tin không hợp lệ vui lòng thử lại hoặc liên hệ tới nhà hàng </p>
+    </div>
+    <div @click="router.push('menu')" v-else class="menu-section menu-section-oops">
       <img class="oops" src="../assets/oops.jpg" alt="">
       <p>Menu rỗng, hãy quay lại thực đơn !!!</p>
     </div>
@@ -49,48 +38,16 @@
 </template>
 
 <script setup>
+import FormSubmit from '@/components/FormSubmit.vue';
 import router from '@/router';
-import cartService from '@/service/cartService';
 import { useCartStore } from '@/stores/cart';
 import { ref, computed } from 'vue';
 
-const booking = ref({ guests: 1, dateTime: '' });
 const cartStore = useCartStore()
 const bookingSuccess = ref(false)
 const bookingFail = ref(false)
 
-const linkToMenu = () => {
-  router.push('menu')
-}
-const submitBooking = () => {
-  const time = new Date(booking.value.dateTime)
-  const listItem = cartStore.getListItem()
-  const data = {
-    items: listItem,
-    take_away: true,
-  }
-  const bookingData = cartService.booking(data)
-  cartStore.items = []
-  if (bookingData) {
-    bookingSuccess.value = true
-  }
-  else {
-    bookingFail.value = true
-  }
-};
-const confirmOrder = async (bookingData) => {
-  cartStore.items = []
-  if (bookingData) {
-    bookingSuccess.value = true
-  }
-  else {
-    bookingFail.value = true
-  }
-};
-const handleDisableSubmitBTN = () => {
-  console.log('disabled: ', cartStore.count < 1);
-  return cartStore.count < 1
-}
+
 </script>
 <style scoped>
 .booking-page {
@@ -101,6 +58,19 @@ const handleDisableSubmitBTN = () => {
   max-width: 1200px;
   margin: 0 auto;
   max-height: 600px;
+}
+
+@media (max-width: 1200px) {
+  .booking-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+  }
+
 }
 
 .booking-section,
@@ -121,30 +91,6 @@ const handleDisableSubmitBTN = () => {
   text-align: center;
 }
 
-.booking-section form {
-  display: grid;
-  gap: 15px;
-}
-
-.booking-section input,
-.booking-section button {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.booking-section button {
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.booking-section button:hover {
-  background-color: #e65c00;
-}
 
 .menu-section {
   max-height: 400px;

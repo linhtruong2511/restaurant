@@ -32,8 +32,7 @@
 <script setup>
 import { useUserStore } from '@/stores/user'
 import { onMounted, ref } from 'vue'
-import { loadUser } from '@/utils/userUtils'
-import { uploadAvatar } from '@/service/accountService'
+import { loadUser, uploadAvatar } from '@/service/accountService'
 import { getCookie } from '@/service/utils'
 
 const userStore = useUserStore()

@@ -4,19 +4,16 @@ const cartService = {
   booking: async (data) => {
     const token = getCookie('token').trim()
     const initOption = init('POST', token, data)
-    let bookingData = null
-    await fetch(domain + 'order/submit', initOption)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-        bookingData = result
-        return true
-      })
-      .catch((err) => {
-        console.log('error: ', err)
-        return false
-      })
+    const response = await fetch(domain + 'order/submit', initOption)
+    console.log(response)
+    if (!response.ok) {
+      const result = await response.json()
+      console.log('new order: ', result)
+      return true
+    } else {
+      console.log('error: ', response.json())
+      return false
+    }
   },
 }
-
 export default cartService

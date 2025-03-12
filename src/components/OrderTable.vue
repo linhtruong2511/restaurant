@@ -26,7 +26,7 @@
         <td class="btns">
           <button @click="linkToEdit(item.id)" class="btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
           <button @click="clickConfirm(item.id)" class="btn confirm-btn"><i class="fa-solid fa-check"></i></button>
-          <button @click="showBill(item.id)" v-show="item.status === 'progressing'" class="btn bill-btn"><i
+          <button @click="showBill(item.id)" v-show="item.status === 'Progressing'" class="btn bill-btn"><i
               class="fa-solid fa-file-lines"></i></button>
         </td>
       </tr>
@@ -47,6 +47,7 @@
 
 <script setup>
 import router from '@/router';
+import billingService from '@/service/billingService';
 import orderService from '@/service/orderService';
 import { useOrderStore } from '@/stores/order';
 import { ref, watch, watchEffect } from 'vue';
@@ -59,13 +60,13 @@ const linkToEdit = (id) => {
 const clickConfirm = (id) => {
   const check = confirm('Xác nhận đơn')
   if (check) {
-    orderStore.changeStatus(id, 'progressing')
+    billingService.confirm(id)
     // sau khi xác nhận đơn hàng được đặt thành công thì sẽ gửi email cho khách hàng
   }
 }
 watchEffect(() => {
-  console.log(offset.value)
   orderService.getOrders(offset.value)
+  // console.log('order: ', orderStore.orders)
 })
 const showBill = (id) => {
   router.push({ name: 'bill', params: { id: id } })

@@ -14,13 +14,13 @@
         Order khách</RouterLink>
     </div>
     <div class="wrapper-right">
-      <div @click="handleLinkToBooking" class="cart">
+      <div @click="linkToBookingPage" class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="badge">{{ cartStore.count }}</span>
       </div>
-      <div @click="handleClickAccount" class="account">
+      <div @click="clickAccount" class="account">
         <div class="avatar">
-          <img ref="userImage" src="../assets/user.png" alt="Avatar">
+          <img ref="userImage" src="../assets/user.png">
         </div>
         <p ref="username" class="username"></p>
       </div>
@@ -28,14 +28,14 @@
     <div v-if="showDropdownAccountButton" class="overlay" @click="showDropdownAccountButton = false">
       <ul v-show="showDropdownAccountButton" class="dropdown-account">
         <li @click="router.push('profile')">Thông tin tài khoản</li>
-        <li @click="handleLogout">Đăng xuất</li>
+        <li @click="logout">Đăng xuất</li>
       </ul>
     </div>
   </header>
 </template>
 
 <script setup>
-import { getInfoUser } from '@/service/accountService';
+import { loadUser } from '@/service/accountService';
 import { setCookie } from '@/service/utils';
 import { useCartStore } from '@/stores/cart';
 import { useUserStore } from '@/stores/user';
@@ -47,38 +47,37 @@ const cartStore = useCartStore()
 const username = ref(null);
 const userImage = ref(null);
 const showDropdownAccountButton = ref(false);
-const isLogged = ref(false);
 const router = useRouter();
 
-const handleClickAccount = () => {
-  if (isLogged.value) {
+const clickAccount = () => {
+  if (userStore.active) {
     showDropdownAccountButton.value = !showDropdownAccountButton.value;
   } else {
     router.push('login');
   }
 };
 
-const initAccount = () => {
-  const info = userStore.info;
-  if (info) {
-    isLogged.value = true;
+const showAccount = () => {
+  if (userStore.active) {
+    userStore.active = true
     username.value.textContent = userStore.info['username'];
+    console.log('avatar: ', userStore.info['avatar']);
     if (userStore.info['avatar'] != null) {
       userImage.value.src = userStore.info['avatar'];
     }
   }
 };
 
-const handleLogout = () => {
+const logout = () => {
   setCookie('token', '', null);
   window.location.reload();
 };
-const handleLinkToBooking = () => {
+const linkToBookingPage = () => {
   router.push('booking')
 }
 onMounted(async () => {
-  await getInfoUser();
-  initAccount();
+  await loadUser();
+  showAccount();
 });
 </script>
 

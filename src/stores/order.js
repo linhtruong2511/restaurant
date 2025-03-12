@@ -13,9 +13,7 @@ export const useOrderStore = defineStore('order', () => {
       }
     })
 
-    if (check) {
-      billingService.confirm(id)
-    } else {
+    if (!check) {
       console.log('change status: Không có đơn hàng nào trùng với id: ' + id)
     }
   }
