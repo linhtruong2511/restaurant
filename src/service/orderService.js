@@ -12,6 +12,19 @@ const orderService = {
       })
       .catch((err) => console.log(err))
   },
+  getOrder: async (id) => {
+    const response = await fetch(
+      domain + 'order/' + id + '/',
+      init('GET', getCookie('token'), null),
+    )
+    if (response.ok) {
+      const result = await response.json()
+      console.log('order ' + id + ':' + result)
+      return result
+    } else {
+      return null
+    }
+  },
 }
 
 export default orderService

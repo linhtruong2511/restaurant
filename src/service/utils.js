@@ -1,4 +1,4 @@
-export const domain = 'http://127.0.0.1:8000/'
+export const domain = 'https://restaurantapi.up.railway.app/'
 export const init = (method, token = null, data = null) => {
   const option = {
     method: method,
