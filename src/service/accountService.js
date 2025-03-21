@@ -20,7 +20,7 @@ export const register = async (data) => {
     return false
   }
 }
-export const getInfoUser = async () => {
+export const loadUser = async () => {
   const userStore = useUserStore()
   const cookies = document.cookie.split(';')
   let token = null
@@ -32,8 +32,12 @@ export const getInfoUser = async () => {
   })
   if (!token) return
   const response = await fetch(domain + 'user/info', init('GET', token))
-  const json = await response.json()
-  userStore.info = json
+  if (response.status != 200) {
+    setCookie('token', '', null)
+  } else {
+    userStore.info = await response.json()
+    userStore.active = true
+  }
 }
 
 export const uploadAvatar = async (file, id, token) => {

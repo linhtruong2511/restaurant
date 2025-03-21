@@ -1,30 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import MenuView from '@/views/MenuView.vue'
-import OrderView from '@/views/OrderView.vue'
-import LayoutView from '@/views/LayoutView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import LoginView from '@/views/LoginView.vue'
-import DashboardView from '@/views/DashboardView.vue'
-import DashboardOrder from '@/components/DashboardOrder.vue'
-import DashboardProfile from '@/components/DashboardProfile.vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import AdminLayout from '@/layouts/AdminLayout.vue'
+import Dashboard from '@/components/admin/Dashboard.vue'
+import Order from '@/components/admin/Order.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      component: LayoutView,
+      component: DefaultLayout,
       children: [
-        {
-          path: 'menu',
-          name: 'menu',
-          component: MenuView,
-        },
-        {
-          path: 'order',
-          name: 'order',
-          component: OrderView,
-        },
         {
           path: '',
           name: 'home',
@@ -33,9 +21,21 @@ const router = createRouter({
       ],
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      path: '/admin/',
+      name: 'admin',
+      component: AdminLayout,
+      children: [
+        {
+          path: '',
+          name: 'dashbroad',
+          component: Dashboard,
+        },
+        {
+          path: 'order/',
+          name: 'order',
+          component: Order,
+        },
+      ],
     },
     {
       path: '/login',
@@ -46,22 +46,6 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterView,
-    },
-    {
-      path: '/profile',
-      component: DashboardView,
-      children: [
-        {
-          path: 'order',
-          name: 'my-order',
-          component: DashboardOrder,
-        },
-        {
-          path: '',
-          name: 'profile',
-          component: DashboardProfile,
-        },
-      ],
     },
   ],
 })

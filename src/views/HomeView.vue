@@ -1,25 +1,166 @@
 <template>
-  <div class="banner">
-    <img src="../assets/banner.png" alt="">
-  </div>
-  <div class="main">
-    <div class="content">
-      <h2 class="content__title">Quán Thịt Nướng Hàn Quốc</h2>
-      <p class="content__body">GoGo House – Quán thịt nướng Hàn Quốc Ngon Số 1 sẽ đưa bạn ghé đến những quán thịt nướng
-        tại thành
-        phố Seoul đã tạo nên danh tiếng cho nền ẩm thực xứ kim chi. Nếu đã một lần thưởng thức thịt nướng tại GoGi
-        House, bạn sẽ không thể quên được hương vị “ngất ngây” của những món sườn non bò Mỹ, nạc vai bò Mỹ, dẻ sườn
-        tươi…. khi hòa quyện vào với các loại gia vị đặc trưng xứ Hàn đã trở nên hấp dẫn đến thế nào. Ngoài ra, những
-        món ăn kèm không thể bỏ qua như cơm trộn, mỳ lạnh, canh Kimchi và các loại lẩu cũng sẽ làm bạn ấn tượng thêm về
-        nền ẩm thực Hàn Quốc.</p>
-    </div>
-    <div class="image">
-      <img src="../assets/home-image-1.jpg" alt="">
-      <img src="../assets/home-image-2.jpg" alt="">
-    </div>
-  </div>
-  <div class="link-to-menu">
-    <RouterLink class="link-btn" to="menu">Xem thực đơn</RouterLink>
+  <div class="home px-20">
+    <section class="about mt-28 flex flex-col items-center">
+      <div class="container">
+        <div class="title text-6xl font-black">
+          <h1 class="pr-10 border-b-4 w-max pb-3">About <span class="text-red-600">PHO HANOI</span></h1>
+          <p class="sub-title text-lg">"Tinh hoa ẩm thực - con người Việt Nam"</p>
+        </div>
+        <div class="content mt-10">
+          <div class="first-content relative flex items-center justify-between gap-10">
+            <div class="text w-2/3 text-2xl ">
+              <p class="subtext pl-20 block">
+                Gắn liền với nền văn minh lúa nước
+                và
+                tồn tại
+                hàng trăm năm,
+                phở Việt theo
+                người Việt đi
+                khắp năm châu,
+                được
+                bạn bè khắp thế giới ưa thích.
+              </p>
+              Dù ngày nay phở cũng đã phát triển và có rất nhiều biến tấu, nhưng bí quyết
+              để có một bát phở " gia truyền" đậm vị xưa vẫn là câu chuyện mang nhiều điều thú vị và ý nghĩa. "Con đường
+              của phở" cũng là con đường bảo tồn và phát huy giá trị tinh hoa của văn hóa ẩm thực Việt.
+            </div>
+            <div class="img relative rounded-2xl overflow-clip">
+              <img class="h-full w-full object-cover" src="../assets/about-2.jpg" alt="">
+              <div class="overlay"></div>
+            </div>
+          </div>
+          <div class="second-content relative flex items-center justify-between gap-20">
+            <div class="img absolute -top-20 rounded-2xl overflow-clip w-1/3">
+              <img class="h-full w-full object-cover" src="../assets/about-3.jpg" alt="">
+              <div class="overlay"></div>
+            </div>
+            <div class="text text-2xl w-2/3 absolute right-0 p-10 top-20">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non fugit, reiciendis laboriosam sint quisquam
+              vel,
+              atque nisi voluptatibus ex consequuntur totam quod! Dolores perspiciatis nobis eaque maiores, facere hic
+              iusto.
+              <div class="subtext text-red-600 text-3xl font-semibold mt-32 text-right">"Nấu cho mình, cho người và cho
+                đời thêm vui"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu mt-[800px] flex flex-col items-center">
+      <div class="container">
+        <div class="title text-6xl font-black flex justify-center flex-col items-center gap-4">
+          <h1 class=" text-black border-b-4 w-max">Menu <span class="text-red-600">PHO
+              HANOI</span>
+          </h1>
+          <p class="sub-title text-lg">"Phở sạch từ tâm - an nhiên mà sống"</p>
+        </div>
+        <div class="menu-item mt-10">
+          <div class="grid grid-cols-3 gap-5">
+            <div class="wrapper overflow-clip rounded-xl group">
+              <div class="item h-full w-full relative overflow-clip hover:scale-110 transition-all duration-500">
+                <img class="w-full h-full max-h-96 object-cover" src="../assets/menu-1.jpg" alt="">
+                <div class="overlay w-full h-full p-10">
+                </div>
+                <div
+                  class="text text-xl font-semibold transition-all duration-500 text-center absolute top-0 left-0 opacity-0 h-full flex items-center p-10 justify-center invisible z-10">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+            <div class="wrapper overflow-clip rounded-xl">
+              <div class="item h-full w-full relative overflow-clip hover:scale-110 transition-all duration-500">
+                <img class="w-full h-full max-h-96 object-cover" src="../assets/menu-2.jpg" alt="">
+                <div class="overlay w-full h-full p-10">
+                </div>
+                <div
+                  class="text text-xl font-semibold transition-all duration-500 text-center absolute top-0 left-0 opacity-0 h-full flex items-center p-10 justify-center invisible z-10">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+            <div class="wrapper overflow-clip rounded-xl">
+              <div class="item h-full w-full relative overflow-clip hover:scale-110 transition-all duration-500">
+                <img class="w-full h-full max-h-96 object-cover" src="../assets/menu-3.jpg" alt="">
+                <div class="overlay w-full h-full p-10">
+                </div>
+                <div
+                  class="text text-xl font-semibold transition-all duration-500 text-center absolute top-0 left-0 opacity-0 h-full flex items-center p-10 justify-center invisible z-10">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+            <div class="wrapper overflow-clip rounded-xl">
+              <div class="item h-full w-full relative overflow-clip hover:scale-110 transition-all duration-500">
+                <img class="w-full h-full max-h-96 object-cover" src="../assets/menu-4.jpg" alt="">
+                <div class="overlay w-full h-full p-10">
+                </div>
+                <div
+                  class="text text-xl font-semibold transition-all duration-500 text-center absolute top-0 left-0 opacity-0 h-full flex items-center p-10 justify-center invisible z-10">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+            <div class="wrapper overflow-clip rounded-xl">
+              <div class="item h-full w-full relative overflow-clip hover:scale-110 transition-all duration-500">
+                <img class="w-full h-full max-h-96 object-cover" src="../assets/menu-5.jpg" alt="">
+                <div class="overlay w-full h-full p-10">
+                </div>
+                <div
+                  class="text text-xl font-semibold transition-all duration-500 text-center absolute top-0 left-0 opacity-0 h-full flex items-center p-10 justify-center invisible z-10">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+            <div class="wrapper overflow-clip rounded-xl">
+              <div class="item h-full w-full relative overflow-clip hover:scale-110 transition-all duration-500">
+                <img class="w-full h-full max-h-96 object-cover" src="../assets/menu-6.jpg" alt="">
+                <div class="overlay w-full h-full p-10">
+                </div>
+                <div
+                  class="text text-xl font-semibold transition-all duration-500 text-center absolute top-0 left-0 opacity-0 h-full flex items-center p-10 justify-center invisible z-10">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact mt-40 flex justify-center mb-40">
+      <div class="container">
+        <div class="title flex items-center justify-center mb-10">
+          <h1 class="text-6xl font-black text-red-600 border-b-4 border-black w-max">
+            Contact
+          </h1>
+        </div>
+        <div class="content flex items-center">
+          <div class="img w-1/2">
+            <img src="../assets/contact1.jpg" alt="">
+          </div>
+          <form @submit.prevent="" class="w-6/12 flex flex-col items-center gap-4">
+            <select class="w-6/12 border border-gray-400 px-5 py-2 rounded-lg" name="title" id="">
+              <option value="mr">MR</option>
+              <option value="mr">MS</option>
+            </select>
+            <input class="w-6/12 rounded-lg border border-gray-400 px-5 py-2 outline-gray-600" type="text" name="name"
+              placeholder="Your name *">
+            <input class="w-6/12 rounded-lg border border-gray-400 px-5 py-2 outline-gray-600" type="email" name="email"
+              placeholder="Your Email *">
+            <input class="w-6/12 rounded-lg border border-gray-400 px-5 py-2 outline-gray-600" type="tel" name="number"
+              placeholder="Your number *">
+            <textarea class="border-gray-400 border w-6/12 px-5 py-4 rounded-lg h-40" name="message" id=""
+              placeholder="Message"></textarea>
+            <button
+              class="bg-red-700 hover:bg-red-800 transition text-white w-1/2 border-gray-400 border py-3 rounded-lg"
+              type="submit">Send
+              message</button>
+          </form>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 <script setup>
@@ -27,143 +168,31 @@
 </script>
 
 <style scoped>
-.banner {
-  position: relative;
+.wrapper:hover .overlay {
+  visibility: visible;
+  opacity: 0.5;
+  background: #000;
 }
 
-.banner img {
-  width: 100%;
-  display: block;
+.first-content .subtext::first-letter {
+  font-size: 9rem;
+  font-weight: bold;
+  color: #dd1000;
+  float: left;
+  line-height: 1;
+  margin-right: 10px;
 }
 
-.banner::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  /* Overlay mờ */
-}
-
-.main {
-  display: flex;
-  align-items: center;
-  margin-top: 50px;
-}
-
-.content {
-  flex: 1;
-  padding-right: 30px;
-  width: calc(50% - 30px);
-}
-
-.content__title {
-  font-weight: 600;
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.content__body {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #555;
-}
-
-.image {
-  display: flex;
-  gap: 20px;
-  width: calc(50% - 30px);
-}
-
-.image img {
-  width: calc(50% - 10px);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.image img:hover {
-  transform: scale(1.05);
-}
-
-a {
-  display: inline-block;
-  background-color: #ff6600;
+.wrapper:hover .text {
+  visibility: visible;
   color: white;
-  padding: 15px 30px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 30px auto;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  opacity: 1;
 }
 
-a:hover {
-  background-color: #e65c00;
-}
-
-@media (max-width: 1100px) {
-  .image {
-    flex-direction: column;
-  }
-
-  .image img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
-}
-
-@media (max-width: 768px) {
-  .main {
-    flex-direction: column;
-    /* Thay đổi hướng flex */
-  }
-
-  .image {
-    align-items: center;
-    margin-top: 30px;
-  }
-
-  .content {
-    display: block;
-    text-align: center;
-    width: 90%;
-    gap: 20px;
-  }
-
-  .image {
-    flex-direction: row;
-    width: 95%;
-  }
-
-  .link-to-menu {
-    text-align: center;
-  }
-}
-
-/* Media query cho màn hình nhỏ hơn nữa (ví dụ: điện thoại) */
-@media (max-width: 480px) {
-  .content {
-    display: block;
-    text-align: center;
-  }
-
-  .content__title {
-    font-size: 24px;
-    /* Giảm kích thước chữ */
-  }
-
-  .image {
-    display: none;
-    /* Hình ảnh chiếm toàn bộ chiều rộng */
-  }
-
-
-
+.overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s ease;
 }
 </style>
