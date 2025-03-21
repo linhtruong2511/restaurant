@@ -5,6 +5,7 @@ import LoginView from '@/views/LoginView.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import Dashboard from '@/components/admin/Dashboard.vue'
+import Order from '@/components/admin/Order.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,6 +29,11 @@ const router = createRouter({
           path: '',
           name: 'dashbroad',
           component: Dashboard,
+        },
+        {
+          path: 'order/',
+          name: 'order',
+          component: Order,
         },
       ],
     },

@@ -1,13 +1,9 @@
 <template>
-  <div class="admin flex h-screen">
-    <div class="navbar inline-block bg-gray-200 w-40 h-full">
-      <AdminNavBar />
-    </div>
-    <div class="main w-full">
-      <div class="head">
-        <AdminHeader />
-      </div>
-      <div class="body px-10">
+  <div class="admin flex h-screen justify-stretch">
+    <AdminNavBar />
+    <div class="main flex-10/12 overflow-auto">
+      <AdminHeader />
+      <div class="body px-10 h-9/12">
         <RouterView />
       </div>
     </div>

@@ -1,21 +1,18 @@
-import billingService from '@/service/billingService'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useOrderStore = defineStore('order', () => {
-  const orders = ref([])
-  const changeStatus = (id, status) => {
-    let check = false
-    orders.value.map((item) => {
-      if (id === item.id) {
-        item.status = status
-        check = true
-      }
-    })
-
-    if (!check) {
-      console.log('change status: Không có đơn hàng nào trùng với id: ' + id)
-    }
+  const d = new Date()
+  const data = ref([
+    {
+      name: 'Nguyễn Văn A',
+      author: 'Trương Khánh Linh',
+      status: 'Pending',
+      time: '2025-03-22T21:27',
+    },
+  ])
+  const addData = (newData) => {
+    data.value.push(newData)
   }
-  return { orders, changeStatus }
+  return { data, addData }
 })

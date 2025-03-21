@@ -1,5 +1,9 @@
 @import './base.css';
 @import 'tailwindcss';
+:root {
+  --btn-bgcolor: oklch(0.707 0.165 254.624);
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -11,4 +15,20 @@ body {
   height: 100%;
   background: #000;
   opacity: 0.1;
+}
+.btn {
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  transition: background-color 500ms ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--btn-bgcolor);
+  color: white;
+}
+
+.btn-lg {
+  padding: 10px 30px;
 }

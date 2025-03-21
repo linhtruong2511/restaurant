@@ -4,7 +4,7 @@
       <div class="logo">
         <RouterLink to="/">
           <div class="wrapper flex items-center">
-            <img class="h-16 w-16" src="../assets/logo.png" alt="Logo">
+            <img class="h-16 w-16" src="../../assets/logo.png" alt="Logo">
             <h2 class="text-3xl font-bold text-red-500">PHO HANOI</h2>
           </div>
         </RouterLink>
@@ -27,7 +27,7 @@
     </div>
   </header>
   <div>
-    <img class="banner w-screen h-screen object-cover" src="../assets/home-1.jpg" alt="">
+    <img class="banner w-screen h-screen object-cover" src="../../assets/home-1.jpg" alt="">
     <div class="overlay bg-black opacity-30 absolute top-0 left-0 w-full h-full "></div>
   </div>
 </template>

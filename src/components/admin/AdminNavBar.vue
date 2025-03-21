@@ -1,18 +1,23 @@
 <template>
-  <div class="logo my-7">
-    <img class="h-12 w-12 mx-auto" src="../../assets/logo.png" alt="">
+  <div class="navbar flex-1/12 inline-block w-40 h-full bg-gray-200">
+    <div class="logo my-7">
+      <router-link to="/">
+        <img class="h-12 w-12 mx-auto" src="../../assets/logo.png" alt="">
+      </router-link>
+    </div>
+    <ul class="nav">
+      <router-link to="/admin">
+        <li class="nav__item">Trang chủ</li>
+      </router-link>
+      <router-link to="/admin/order">
+        <li class="nav__item">Đặt bàn</li>
+      </router-link>
+      <li class="nav__item">Nhân viên</li>
+      <li class="nav__item">Menu</li>
+      <li class="nav__item">Hóa đơn</li>
+      <li class="nav__item">Nguyên liệu</li>
+    </ul>
   </div>
-
-  <ul class="nav">
-    <router-link to="admin/dashbroad">
-      <li class="nav__item">Trang chủ</li>
-    </router-link>
-    <li class="nav__item">Đặt bàn</li>
-    <li class="nav__item">Nhân viên</li>
-    <li class="nav__item">Menu</li>
-    <li class="nav__item">Hóa đơn</li>
-    <li class="nav__item">Nguyên liệu</li>
-  </ul>
 
 </template>
 

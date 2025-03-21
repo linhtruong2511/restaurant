@@ -1,5 +1,6 @@
 <template>
-  <div class="dateline flex flex-col border-2 border-gray-300 shadow-xl overflow-y-auto flex-1/3 rounded-lg">
+  <div
+    class="dateline flex flex-col border-2 shadow-xl overflow-y-auto flex-1/2 max-h-[500px] rounded-lg border-gray-300 lg:flex-1/3">
     <div class="dateline__header text-xl font-semibold px-4 py-4 border-b border-b-gray-300">Lịch, thời gian
       công tác
     </div>
