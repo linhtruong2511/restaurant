@@ -4,8 +4,9 @@ import RegisterView from '@/views/RegisterView.vue'
 import LoginView from '@/views/LoginView.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
-import Dashboard from '@/components/admin/Dashboard.vue'
-import Order from '@/components/admin/Order.vue'
+import Dashboard from '@/components/admin/dashboard/Dashboard.vue'
+import Order from '@/components/admin/order/Order.vue'
+import Employee from '@/components/admin/employee/Employee.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -34,6 +35,11 @@ const router = createRouter({
           path: 'order/',
           name: 'order',
           component: Order,
+        },
+        {
+          path: 'employee/',
+          name: 'employee',
+          component: Employee,
         },
       ],
     },
