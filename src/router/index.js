@@ -7,6 +7,7 @@ import AdminLayout from '@/layouts/AdminLayout.vue'
 import Dashboard from '@/components/admin/dashboard/Dashboard.vue'
 import Order from '@/components/admin/order/Order.vue'
 import Employee from '@/components/admin/employee/Employee.vue'
+import Menu from '@/components/admin/menu/Menu.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -40,6 +41,11 @@ const router = createRouter({
           path: 'employee/',
           name: 'employee',
           component: Employee,
+        },
+        {
+          path: 'menu/',
+          name: 'menu',
+          component: Menu,
         },
       ],
     },

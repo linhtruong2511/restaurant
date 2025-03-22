@@ -2,10 +2,8 @@
   <div class="container h-full flex flex-col justify-between items-stretch gap-16 xl:flex-row xl:gap-5">
     <div class="order my-5 h-full flex-2/3">
       <div class="order__header flex justify-between items-start">
-        <div @click="showFormCreate = !showFormCreate" class="btn btn-lg relative group">
-          Thêm đơn <span
-            class="plus absolute right-0 group-hover:right-4 transition-all duration-300 text-white">+</span>
-        </div>
+        <!-- <ButtonAddAnimation>Thêm đơn</ButtonAddAnimation> -->
+        <ToolBar @handle-show-form-create="handleShowFormCreate" />
         <form class="search">
           <input type="search" class="border-2 border-gray-400 px-2 py-2 rounded-lg focus:outline-none"
             placeholder="Search">
@@ -21,12 +19,15 @@
 </template>
 
 <script setup>
-import router from '@/router';
 import OrderTable from './OrderTable.vue';
 import OrderCreate from './OrderCreate.vue';
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import HistoryEditOrder from './HistoryEditOrder.vue';
+import ToolBar from '@/components/common/ToolBar.vue';
 const showFormCreate = ref(false)
+const handleShowFormCreate = () => {
+  showFormCreate.value = !showFormCreate.value;
+}
 </script>
 
 <style scoped>
