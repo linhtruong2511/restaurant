@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
-import Pagination from '../common/Pagination.vue';
-import SearchInput from '../common/SearchInput.vue';
+import Pagination from '@/components/common/Pagination.vue';
+import SearchInput from '@/components/common/SearchInput.vue';
 import PersonnelTable from './PersonnelTable.vue';
 const date = new Date()
 </script>

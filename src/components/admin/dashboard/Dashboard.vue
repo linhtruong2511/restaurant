@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import DateLine from '@/components/admin/DateLine.vue';
-import Personnel from '@/components/admin/Personnel.vue'
+import DateLine from './DateLine.vue';
+import Personnel from './Personnel.vue';
 import ChatBox from './ChatBox.vue';
 import CommonInformation from './CommonInformation.vue';
 import { useSettingAdmin } from '@/stores/settingAdmin';

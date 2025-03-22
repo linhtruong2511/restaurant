@@ -5,7 +5,7 @@
       <ol class="relative border-s-2 border-gray-400">
         <li class="mb-10 ms-6">
           <span class="avatar absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3">
-            <img class="rounded-full shadow-lg" src="../../assets/chuahe.jpg" alt="Bonnie image" />
+            <img class="rounded-full shadow-lg" src="../../../assets/chuahe.jpg" alt="Bonnie image" />
           </span>
           <div
             class="items-center justify-between gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-xs sm:flex ">
@@ -17,7 +17,7 @@
         </li>
         <li class="mb-10 ms-6">
           <span class="avatar absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3">
-            <img class="rounded-full shadow-lg" src="../../assets/chuahe.jpg" alt="Bonnie image" />
+            <img class="rounded-full shadow-lg" src="../../../assets/chuahe.jpg" alt="Bonnie image" />
           </span>
           <div
             class="items-center justify-between gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-xs sm:flex ">
@@ -29,7 +29,7 @@
         </li>
         <li class="mb-10 ms-6">
           <span class="avatar absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3">
-            <img class="rounded-full shadow-lg" src="../../assets/chuahe.jpg" alt="Bonnie image" />
+            <img class="rounded-full shadow-lg" src="../../../assets/chuahe.jpg" alt="Bonnie image" />
           </span>
           <div
             class="items-center justify-between gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-xs sm:flex ">
@@ -41,7 +41,7 @@
         </li>
         <li class="mb-10 ms-6">
           <span class="avatar absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3">
-            <img class="rounded-full shadow-lg" src="../../assets/chuahe.jpg" alt="Bonnie image" />
+            <img class="rounded-full shadow-lg" src="../../../assets/chuahe.jpg" alt="Bonnie image" />
           </span>
           <div
             class="items-center justify-between gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-xs sm:flex ">

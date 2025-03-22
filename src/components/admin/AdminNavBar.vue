@@ -12,7 +12,9 @@
       <router-link to="/admin/order">
         <li class="nav__item">Đặt bàn</li>
       </router-link>
-      <li class="nav__item">Nhân viên</li>
+      <router-link to="/admin/employee">
+        <li class="nav__item">Nhân viên</li>
+      </router-link>
       <li class="nav__item">Menu</li>
       <li class="nav__item">Hóa đơn</li>
       <li class="nav__item">Nguyên liệu</li>

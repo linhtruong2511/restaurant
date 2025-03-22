@@ -69,8 +69,8 @@
 </template>
 
 <script setup>
+import Pagination from '../../common/Pagination.vue';
 import { useOrderStore } from '@/stores/order';
-import Pagination from '../common/Pagination.vue';
 import { ref } from 'vue';
 import DropdownOrderTable from './DropdownOrderTable.vue';
 
