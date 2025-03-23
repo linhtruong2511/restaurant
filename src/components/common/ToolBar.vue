@@ -1,6 +1,6 @@
 <template>
   <div class="toolbar border-gray-100 border rounded-sm shadow">
-    <ul class="flex text-sm">
+    <ul class="flex text-sm text-gray-700">
       <li @click="handleShowFormCreate" class="btn">Thêm <i class="fa-solid fa-plus"></i></li>
       <li @click="handleShowFormEdit" class="btn">Sửa <i class="fa-solid fa-pencil"></i></li>
       <li @click="handleDelete" class="btn">Xóa <i class="fa-solid fa-trash"></i></li>

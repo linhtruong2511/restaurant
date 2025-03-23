@@ -5,13 +5,13 @@
         <label class="block my-2 font-medium text-gray-900" for="name">Tên</label>
         <input
           class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          type="text" id="name">
+          type="text" id="name" required>
       </div>
       <div>
         <label class="block my-2 font-medium text-gray-900" for="price">Giá</label>
         <input
           class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          type="number" name="price">
+          type="number" name="price" required>
       </div>
       <div>
         <label for="ordered" class="block my-2 font-medium text-gray-900 ">Loại</label>
