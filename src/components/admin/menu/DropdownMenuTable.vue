@@ -3,7 +3,7 @@
     class="fa-solid fa-ellipsis-vertical font-medium cursor-pointer text-blue-600 dark:text-blue-500">
   </i>
   <transition class="overflow-clip">
-    <div v-if="isShowDropdown" @click="handleShowDropdown" class="dropdown shadow-lg">
+    <div v-if="isShowDropdown" @click="handleShowDropdown" class="dropdown shadow-lg bg-white z-10">
       <div id="dropdown" class="z-10  divide-y rounded-lg w-44 overflow-clip bg-white divide-gray-100">
         <ul class="py-2 text-sm text-gray-700">
           <li>
@@ -13,11 +13,7 @@
             <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Sửa</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Earnings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Sign
-              out</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Xóa</a>
           </li>
         </ul>
       </div>
@@ -27,18 +23,19 @@
 </template>
 
 <script setup>
-import { ref, watch, watchEffect } from 'vue';
-const props = defineProps({
-  closeDropdown: Boolean
-})
+import { onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 const isShowDropdown = ref(false);
 const handleShowDropdown = () => {
   isShowDropdown.value = !isShowDropdown.value;
 }
-watchEffect(() => {
-  if (props.closeDropdown == true) {
-    isShowDropdown.value = false
-  }
+const handleKeyUpESC = (e) => {
+  isShowDropdown.value = false;
+}
+onMounted(() => {
+  document.addEventListener('keyup', handleKeyUpESC);
+})
+onUnmounted(() => {
+  document.removeEventListener('keyup', handleKeyUpESC);
 })
 </script>
 

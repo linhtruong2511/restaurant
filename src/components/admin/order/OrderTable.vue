@@ -51,8 +51,6 @@
             {{ item.status }}
           </td>
           <td id="edit" @click="showDropdown = !showDropdown" class="px-6 py-4 text-center relative">
-            <i
-              class="fa-solid fa-ellipsis-vertical font-medium cursor-pointer pointer-events-none text-blue-600 dark:text-blue-500"></i>
             <DropdownOrderTable :show-dropdown="showDropdown" />
           </td>
         </tr>
