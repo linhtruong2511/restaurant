@@ -1,6 +1,6 @@
 <template>
-  <div @click="handleClickTable"
-    class="order-table overflow-x-auto h-full shadow-md sm:rounded-lg p-5 flex flex-col justify-between max-h-[500px]">
+  <div
+    class="menu-table overflow-x-auto h-full shadow-md sm:rounded-lg p-5 flex flex-col justify-between max-h-[500px]">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
         <tr>
@@ -12,16 +12,22 @@
             </div>
           </th>
           <th scope="col" class="px-6 py-3">
-            Tên khách
+            ID
           </th>
           <th scope="col" class="px-6 py-3">
-            Người tạo
+            Tên
           </th>
           <th scope="col" class="px-6 py-3">
-            Thời gian
+            Loại
           </th>
           <th scope="col" class="px-6 py-3">
-            Status
+            Giá
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Trạng thái
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Ghi chú
           </th>
           <th scope="col" class="px-6 py-3">
             Action
@@ -29,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in orderStore.data" :key="index"
+        <tr v-for="(item, index) in menuStore.data" :key="index"
           class="bg-white border-b border-gray-200 hover:bg-gray-50">
           <td class="w-4 p-4">
             <div class="flex items-center">
@@ -39,24 +45,30 @@
             </div>
           </td>
           <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-            {{ item.name }}
+            {{ item.id }}
           </th>
           <td class="px-6 py-4">
-            {{ item.author }}
+            {{ item.name }}
           </td>
           <td class="px-6 py-4">
-            {{ item.time }}
+            {{ item.type }}
+          </td>
+          <td class="px-6 py-4">
+            {{ item.price }}
           </td>
           <td class="px-6 py-4">
             {{ item.status }}
           </td>
-          <td id="edit" @click="showDropdown = !showDropdown" class="px-6 py-4 text-center relative">
-            <DropdownOrderTable :show-dropdown="showDropdown" />
+          <td class="px-6 py-4">
+            {{ item.note }}
+          </td>
+          <td id="edit" class="px-6 py-4 text-center relative">
+            <DropdownMenuTable />
           </td>
         </tr>
       </tbody>
     </table>
-    <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+    <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4">
       <span
         class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
         <span class="font-semibold text-gray-900 ">1-10</span> of <span
@@ -67,18 +79,12 @@
 </template>
 
 <script setup>
-import Pagination from '../../common/Pagination.vue';
-import { useOrderStore } from '@/stores/order';
+import Pagination from '@/components/common/Pagination.vue';
+import { useMenuStore } from '@/stores/menu';
 import { ref } from 'vue';
-import DropdownOrderTable from './DropdownOrderTable.vue';
+import DropdownMenuTable from './DropdownMenuTable.vue';
+const menuStore = useMenuStore();
 
-const orderStore = useOrderStore();
-const showDropdown = ref(false)
-const handleClickTable = (e) => {
-  if (e.target.id != 'dropdown' && showDropdown.value == true && e.target.id != 'edit') {
-    showDropdown.value = false
-  }
-}
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>
